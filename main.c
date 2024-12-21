@@ -1,4 +1,5 @@
 #include"stdio.h"
+#include"stdlib.h"
 
 struct character
 {
@@ -15,8 +16,33 @@ struct character
     int move;
     int body;
     int empathy;
-
+    struct weapon; 
+    struct armor;
 };
+
+struct weapon
+{
+    char name [100];
+    char calibr [20];
+    char damage [20];
+    int ROF;
+    int magazin;
+};
+
+struct armor
+{
+    char name [100];
+    int SP;
+};
+
+struct cybernatic
+{
+    char name [100];
+    int bonus;
+};
+
+
+
 
 
 void stats();
