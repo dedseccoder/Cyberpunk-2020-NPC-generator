@@ -1,6 +1,14 @@
 #include"stdio.h"
 #include"stdlib.h"
+#include"string.h"
 #include"time.h"
+
+void clear_screen();
+void stats(int*);
+void skills(char*, int);
+void implants();
+void weapon();
+void armor();
 
 struct character
 {
@@ -35,16 +43,10 @@ struct cybernatic
 	int bonus;
 };
 
-void stats(int*);
-void skills(char*, int);
-void implants();
-void weapon();
-void armor();
-
 int main()
 {
 	struct character NPC;
-	int role, sex, boss;
+	int roleID, sexID, bossID;
 	char roles[10][40] = {"Rockerboy", "Solo", "Netrunner", "Techie", "Medtech", "Media", "Corporate", "Cop", "Fixer", "Nomad"};
 	for(int i = 0; i < 10; i++)
 	{
@@ -52,36 +54,59 @@ int main()
 	}
 	printf("11.Random\n");
 	printf("Choose your NPC role: "); 
-	scanf("%d", &role);
-	if(role == 11) 
+	scanf("%d", &roleID);
+	if(roleID == 11) 
 	{
 		srand(time(0));
-		role = rand() % (10 + 1 - 1) + 1;
+		roleID = rand() % (10 + 1 - 1) + 1;
 	}
+	strcpy(NPC.role, roles[roleID - 1]);
+	clear_screen();
+	printf("You got %s\n", NPC.role);
 	printf("\n");
-	printf("1.Male\n2.Female\n3.Diffrent\n4.Random (male or female)\n");
+	
+	char sex[3][20] = {"Male", "Female", "Diffrent"};
+	for(int i = 0; i < 3; i++)
+	{
+		printf("%d.%s\n", i+1, sex[i]);
+	}
+	printf("4.Random (male or female)\n");
 	printf("Set your NPC sex: ");
-	scanf("%d", &sex);
-	if(sex == 4) 
+	scanf("%d", &sexID);
+	if(sexID == 4) 
 	{
 		srand(time(0));
-		sex = rand() % (2 + 1 - 1) + 1;
+		sexID = rand() % (2 + 1 - 1) + 1;
 	}
+	strcpy(NPC.sex, sex[sexID - 1]);
+	clear_screen();
+	printf("You got %s\n", NPC.sex);
+
 	printf("\n");
 	printf("Is your NPC advanced booster?\n");
 	printf("1.Yes\n2.No\n3.Random\n");
 	printf("Set: ");
-	scanf("%d", &boss);
-	if(boss == 3) 
+	scanf("%d", &bossID);
+	if(bossID == 3) 
 	{
 		srand(time(0));
-		boss = rand() % (2 + 1 - 1) + 1;
+		bossID = rand() % (2 + 1 - 1) + 1;
 	}
 	printf("\n");
 
 	stats(NPC.stats);
 	
 	return 0;
+}
+
+void clear_screen()
+{
+#ifdef WINDOWS
+    system("cls");
+#else
+    // Assume POSIX
+    system ("clear");
+#endif
 }
 
 void stats(int* statsArr)

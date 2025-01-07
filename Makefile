@@ -4,7 +4,7 @@ all: objects
 	$(CC) *.o -o bin/NPCGenerator2020
 
 debug: main.c
-	$(CC) $^ -o bin/NPCGenerator2020-debug
+	$(CC) $^ -g -o bin/NPCGenerator2020-debug
 
 objects: main.c
 	$(CC) $^ -c
