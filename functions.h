@@ -3,12 +3,13 @@
 #include"string.h"
 #include"time.h"
 
-void clear_screen();
 void stats(int*);
-void skills(char*, int);
+void skills(int, int, char*);
 void implants();
 void weapon();
 void armor();
+
+void clear_screen();
 
 struct character
 {
@@ -21,6 +22,12 @@ struct character
 	struct weapon; 
 	struct armor;
 };
+
+struct skillSet
+{
+	char names[10][100];
+	int stats[10];
+}
 
 struct weapon
 {
