@@ -20,14 +20,14 @@ void skills(int role, int boss, struct skillSet* setup)
 	{
 		setup->names[0] = "Харизматическое Лидерство (спец)";
 		setup->names[1] = "Осведомлённость/Наблюдательность";
-		setup->names[2] = "Выступление" 
-		setup->names[3] = "Гардероб и Стиль"
-		setup->names[4] = "Сочинение"
-		setup->names[5] = "Драка"
-		setup->names[6] = "Игра на инструментах"
-		setup->names[7] = "Знание улиц"
-		setup->names[8] = "Убеждение и забалтывание"
-		ssetup->name[9] = "Соблазнение"
+		setup->names[2] = "Выступление"; 
+		setup->names[3] = "Гардероб и Стиль";
+		setup->names[4] = "Сочинение";
+		setup->names[5] = "Драка";
+		setup->names[6] = "Игра на инструментах";
+		setup->names[7] = "Знание улиц";
+		setup->names[8] = "Убеждение и забалтывание";
+		ssetup->name[9] = "Соблазнение";
 	}
 
 	srand(time(0));
@@ -38,7 +38,7 @@ void skills(int role, int boss, struct skillSet* setup)
 		{
 			randScore = rand() % (10 + 1 - 2) + 2;
 		}
-		while(randScore <= score)
+		while(randScore <= score);
 
 		setup->stats[i] = randScore;
 		score -= randScore;
@@ -56,7 +56,7 @@ void skills(int role, int boss, struct skillSet* setup)
 			{
 				randScore = rand() % (10 + 1 - 2) + 2;
 			}
-			while(randScore <= extraScore)
+			while(randScore <= extraScore);
 			setup->stats[skillId] += randScore;
 			extraScore -= randScore;
 		}

@@ -27,7 +27,7 @@ struct skillSet
 {
 	char names[10][100];
 	int stats[10];
-}
+};
 
 struct weapon
 {
